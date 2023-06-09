@@ -1,2 +1,3 @@
 node_modules
-public/templates/_*
+dist
+public/templates/_*/**.*
