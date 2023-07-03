@@ -5,7 +5,6 @@ export type WriteArgs<T extends object> = { [x in keyof T]: any };
 export type WriteFileConfig = {
   template: string;
   dist: string;
-  fileName: string;
 };
 
 export function write<T extends WriteArgs<T>>(
@@ -23,12 +22,12 @@ export function write<T extends WriteArgs<T>>(
       template = template.replace(`{{${key}}}`, args[key]);
     }
 
-    fs.writeFileSync(`${fileConfig.dist}/${fileConfig.fileName}`, template, {
+    fs.writeFileSync(`${fileConfig.dist}`, template, {
       encoding: "utf-8",
     });
 
     return Result.success<string>(template);
-  } catch (err) {
+  } catch (err: any) {
     return Result.failure<string>(
       {
         title: "Write Template",

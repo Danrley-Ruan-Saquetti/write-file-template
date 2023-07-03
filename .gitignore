@@ -1,3 +1,5 @@
 node_modules
 dist
-public/templates/_*/**.*
+public/templates/_*/*
+
+.env
